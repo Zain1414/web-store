@@ -51,3 +51,22 @@ Alternatively you can use the [Spring Boot Maven plugin](https://docs.spring.io/
 ```shell
 mvn clean test
 ```
+
+## Generate Test Coverage and SonarQube report
+
+This section requires SonarQube to be up and running, Get started in two minutes follow [SonarQube](https://docs.sonarqube.org/latest/setup/get-started-2-minutes/) 
+
+Once the SonarQube is started, Please switch to the project working directory and execute following commands,
+
+```shell
+mvn clean test
+mvn sonar:sonar
+```
+
+After the commands are executed completely, The logs would have contain a SonarQube url to view details. It would be something like 
+
+```
+ANALYSIS SUCCESSFUL, you can browse http://localhost:9000/dashboard?id=com.web%3Astore
+```
+
+Please browse the URL in your favorite browser and explore the report dashboard.
