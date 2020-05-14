@@ -17,7 +17,7 @@ public class Invoice {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue
     private int id;
 
     @Column(name = "gross_amount")

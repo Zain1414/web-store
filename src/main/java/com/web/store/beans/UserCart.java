@@ -21,7 +21,7 @@ public class UserCart {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue
     private int id;
 
     @ManyToOne
