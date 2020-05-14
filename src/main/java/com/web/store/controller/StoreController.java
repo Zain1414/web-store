@@ -16,8 +16,7 @@ public class StoreController {
     @ResponseBody
     public Invoice getBillAmount(@PathVariable("id") Integer cartId) {
 
-        storeService.billUserCart(cartId);
+        return storeService.billUserCart(cartId);
 
-        return null;
     }
 }

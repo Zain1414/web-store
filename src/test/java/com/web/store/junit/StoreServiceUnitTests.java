@@ -1,4 +1,4 @@
-package com.web.store.unit;
+package com.web.store.junit;
 
 import com.web.store.beans.Products;
 import com.web.store.beans.UserCart;
@@ -11,25 +11,23 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
-@ExtendWith(SpringExtension.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
+@ExtendWith(MockitoExtension.class)
 public class StoreServiceUnitTests {
 
-    @MockBean
+    @Mock
     private UserCartRepository cartRepository;
 
-    @Autowired
+    @InjectMocks
     private StoreService storeService;
 
     private Set<UserCart> userCarts;
@@ -51,11 +49,11 @@ public class StoreServiceUnitTests {
     @DisplayName("Test NetAmount User Employee (30%) Category")
     public void testUserIsEmployee(){
 
-        Users user = new Users().builder().name("Robert").type(Users.UserType.EMPLOYEE)
+        Users user = Users.builder().name("Robert").type(Users.UserType.EMPLOYEE)
                 .registrationDate(LocalDate.of(2019, 01, 22))
                 .build();
 
-        Optional<UserCart> cart = Optional.of(new UserCart().builder().id(1).user(user).build());
+        Optional<UserCart> cart = Optional.of(UserCart.builder().id(1).user(user).build());
 
         userCarts.add(cart.get());
 
@@ -78,11 +76,11 @@ public class StoreServiceUnitTests {
     @DisplayName("Test NetAmount User Affiliated (10%) Category")
     public void testUserIsAffiliated(){
 
-        Users user = new Users().builder().name("James").type(Users.UserType.AFFILIATED)
+        Users user = Users.builder().name("James").type(Users.UserType.AFFILIATED)
                 .registrationDate(LocalDate.of(2019, 01, 22))
                 .build();
 
-        Optional<UserCart> cart = Optional.of(new UserCart().builder().id(1).user(user).build());
+        Optional<UserCart> cart = Optional.of(UserCart.builder().id(1).user(user).build());
 
         userCarts.add(cart.get());
 
@@ -105,11 +103,11 @@ public class StoreServiceUnitTests {
     @DisplayName("Test NetAmount User Loyal Customer (5%) Category")
     public void testUserIsLoyalCustomer(){
 
-        Users user = new Users().builder().name("Ahmed").type(Users.UserType.CUSTOMER)
+        Users user = Users.builder().name("Ahmed").type(Users.UserType.CUSTOMER)
                 .registrationDate(LocalDate.of(2018, 01, 22))
                 .build();
 
-        Optional<UserCart> cart = Optional.of(new UserCart().builder().id(1).user(user).build());
+        Optional<UserCart> cart = Optional.of(UserCart.builder().id(1).user(user).build());
 
         userCarts.add(cart.get());
 
@@ -132,11 +130,11 @@ public class StoreServiceUnitTests {
     @DisplayName("Test NetAmount User Not Loyal Customer Category")
     public void testUserIsNotLoyalCustomer(){
 
-        Users user = new Users().builder().name("Zain").type(Users.UserType.CUSTOMER)
+        Users user = Users.builder().name("Zain").type(Users.UserType.CUSTOMER)
                 .registrationDate(LocalDate.of(2019, 01, 22))
                 .build();
 
-        Optional<UserCart> cart = Optional.of(new UserCart().builder().id(1).user(user).build());
+        Optional<UserCart> cart = Optional.of(UserCart.builder().id(1).user(user).build());
 
         userCarts.add(cart.get());
 
