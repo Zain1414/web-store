@@ -15,6 +15,10 @@ import java.time.LocalDateTime;
 import java.time.chrono.ChronoLocalDate;
 import java.util.Optional;
 
+/**
+ * @author Mohammad Zain
+ * @since 14/05/2020
+ */
 @Service
 public class StoreService {
 
@@ -24,6 +28,10 @@ public class StoreService {
     @Autowired
     private InvoiceRepository invoiceRepository;
 
+    /**
+     * @param cartId user cart id
+     * @return Invoice generated for the user cart
+     */
     public Invoice billUserCart(Integer cartId){
 
         Optional<UserCart> cart = cartRepository.findById(cartId);
@@ -71,6 +79,10 @@ public class StoreService {
         return invoice;
     }
 
+    /**
+     * @param user store user
+     * @return discount rate particular to user category
+     */
     private double getDiscountRate(Users user){
 
         if(Users.UserType.EMPLOYEE.equals(user.getType()))

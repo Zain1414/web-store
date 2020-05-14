@@ -12,7 +12,7 @@ public class ExceptionAdvice {
     @ExceptionHandler(value = NotFoundException.class)
     public ResponseEntity<CustomErrorResponse> handleGenericNotFoundException(NotFoundException e) {
 
-        CustomErrorResponse error = new CustomErrorResponse().builder().errorCode("NOT_FOUND_ERROR")
+        CustomErrorResponse error = CustomErrorResponse.builder().errorCode("NOT_FOUND_ERROR")
                 .errorMsg(e.getMessage())
                 .timestamp(LocalDateTime.now())
                 .status(HttpStatus.NOT_FOUND.value()).build();
